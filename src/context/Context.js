@@ -1,5 +1,5 @@
-import React, { createContext } from 'react';
-import {getAuth} from 'firebase/auth'
+import React, { createContext, useEffect, useState } from 'react';
+import {getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup} from 'firebase/auth'
 import app from '../firebase.config'
 
 
@@ -9,10 +9,21 @@ const auth=getAuth(app)
 
 const Context = ({children}) => {
 
-        
+    const [user,setUser]=useState([])
+
+        const googleAuth=new GoogleAuthProvider()
 
 
-    const contextValue={default:'tomader majhe ni'}
+        const google=()=>{
+            return signInWithPopup(auth,googleAuth)
+        }
+
+        useEffect(()=>{
+            const unsubscribe=onAuthStateChanged(auth,currentUser=>{setUser(currentUser)})
+            return unsubscribe()
+        },[])
+
+    const contextValue={google,user}
     return (
         <div>
             <hotelContext.Provider value={contextValue}>

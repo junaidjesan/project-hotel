@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Links from '../Links/Links';
 
 const Register = () => {
     return (
@@ -11,7 +12,7 @@ const Register = () => {
                     <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
                     </div>
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                    <div className="card-body">
+                    <form className="card-body">
                         <div className="form-control">
                         <label className="label">
                             <span className="label-text">Name</span>
@@ -37,7 +38,8 @@ const Register = () => {
                         <div className="form-control mt-6">
                         <button className="btn btn-primary">Register</button>
                         </div>
-                    </div>
+                    </form>
+                    <Links></Links>
                     </div>
                 </div>  
             </div>
