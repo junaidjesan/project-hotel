@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import UserNav from '../../Navbar/UserNav/UserNav';
 import Links from '../Links/Links';
 
 const Register = () => {
     return (
         <div>
+            <UserNav></UserNav>
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div className="text-center lg:text-left">
