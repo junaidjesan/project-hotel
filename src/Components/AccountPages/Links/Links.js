@@ -1,13 +1,19 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useLocation } from 'react-router-dom';
 import { hotelContext } from '../../../context/Context';
 
 const Links = () => {
     const {google}=useContext(hotelContext)
 
+    const location=useLocation()
+
+    const from=location.state?.from?.pathname||'/'
+
     const handleGoogle=()=>{
         google()
-        .then(res=>{})
+        .then(res=>{
+            Navigate(from,{replace:true})
+        })
         .catch(error=>console.error(error))
     }
     return (

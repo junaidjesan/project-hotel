@@ -3,7 +3,14 @@ import { Link } from 'react-router-dom';
 import { hotelContext } from '../../../context/Context';
 
 const UserNav = () => {
-    const {user}=useContext(hotelContext)
+    const {user,signOutProvider}=useContext(hotelContext)
+
+
+    const handleSignOut=()=>{
+        signOutProvider()
+        .then(()=>{})
+        .catch(error=>{console.error(error)})
+    }
     return (
         <div>
             <div className="navbar bg-base-100">
@@ -20,7 +27,7 @@ const UserNav = () => {
                     {user?.uid&&
                     <div>
                         <Link className='btn btn-primary mr-3' to='/favourite'><button>Favourite</button></Link>
-                    <Link className='btn btn-primary' to='/signOut'><button>Sign Out</button></Link>
+                    <Link onClick={handleSignOut} className='btn btn-primary' to='/signOut'><button>Sign Out</button></Link>
                     </div>}
                 </ul>
             </div>
